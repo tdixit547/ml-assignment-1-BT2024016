@@ -1,0 +1,160 @@
+{
+  "seeds": [
+    42,
+    137,
+    2026
+  ],
+  "specs": {
+    "1": {
+      "lasso5_005": {
+        "method": "lasso",
+        "basis": "monomial",
+        "degree": 5,
+        "alpha": 0.005,
+        "relax": 0.0
+      },
+      "lasso5_008": {
+        "method": "lasso",
+        "basis": "monomial",
+        "degree": 5,
+        "alpha": 0.008,
+        "relax": 0.0
+      },
+      "lasso5_010": {
+        "method": "lasso",
+        "basis": "monomial",
+        "degree": 5,
+        "alpha": 0.01,
+        "relax": 0.0
+      },
+      "relaxed5_015": {
+        "method": "lasso",
+        "basis": "monomial",
+        "degree": 5,
+        "alpha": 0.015,
+        "relax": 0.5
+      },
+      "relaxed5_020": {
+        "method": "lasso",
+        "basis": "monomial",
+        "degree": 5,
+        "alpha": 0.02,
+        "relax": 0.5
+      },
+      "refit5_030": {
+        "method": "lasso",
+        "basis": "monomial",
+        "degree": 5,
+        "alpha": 0.03,
+        "relax": 1.0
+      },
+      "lasso6_010": {
+        "method": "lasso",
+        "basis": "monomial",
+        "degree": 6,
+        "alpha": 0.01,
+        "relax": 0.0
+      },
+      "ard5": {
+        "method": "ard",
+        "basis": "monomial",
+        "degree": 5
+      },
+      "ridge5_legendre": {
+        "method": "ridge",
+        "basis": "legendre",
+        "degree": 5,
+        "alpha": 0.1,
+        "penalty": 2.0
+      }
+    },
+    "2": {
+      "ridge12_legendre": {
+        "method": "ridge",
+        "basis": "legendre",
+        "degree": 12,
+        "alpha": 0.01,
+        "penalty": 2.0
+      },
+      "ridge14_legendre": {
+        "method": "ridge",
+        "basis": "legendre",
+        "degree": 14,
+        "alpha": 0.01,
+        "penalty": 2.0
+      },
+      "ridge11_legendre": {
+        "method": "ridge",
+        "basis": "legendre",
+        "degree": 11,
+        "alpha": 0.01,
+        "penalty": 2.0
+      },
+      "ridge8_legendre": {
+        "method": "ridge",
+        "basis": "legendre",
+        "degree": 8,
+        "alpha": 0.31622776601683794,
+        "penalty": 1.0
+      },
+      "relaxed9_001": {
+        "method": "lasso",
+        "basis": "monomial",
+        "degree": 9,
+        "alpha": 0.001,
+        "relax": 0.5
+      },
+      "refit12_003": {
+        "method": "lasso",
+        "basis": "monomial",
+        "degree": 12,
+        "alpha": 0.003,
+        "relax": 1.0
+      },
+      "refit8_legendre": {
+        "method": "lasso",
+        "basis": "legendre",
+        "degree": 8,
+        "alpha": 0.02,
+        "relax": 1.0
+      },
+      "refit9_legendre": {
+        "method": "lasso",
+        "basis": "legendre",
+        "degree": 9,
+        "alpha": 0.015,
+        "relax": 1.0
+      },
+      "lasso9_0005": {
+        "method": "lasso",
+        "basis": "monomial",
+        "degree": 9,
+        "alpha": 0.0005,
+        "relax": 0.0
+      }
+    }
+  },
+  "blends": {
+    "1": {
+      "average_lasso_ard": [
+        "lasso5_008",
+        "ard5"
+      ],
+      "average_lasso_relaxed": [
+        "lasso5_008",
+        "relaxed5_015"
+      ]
+    },
+    "2": {
+      "average_ridge_lasso": [
+        "ridge12_legendre",
+        "relaxed9_001"
+      ],
+      "average_three": [
+        "ridge12_legendre",
+        "relaxed9_001",
+        "refit8_legendre"
+      ]
+    }
+  }
+}

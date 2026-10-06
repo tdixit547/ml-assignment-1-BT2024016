@@ -1,0 +1,30 @@
+{
+  "seed": 42,
+  "folds": 5,
+  "holdout_fraction": 0.2,
+  "all_feature_degrees": {
+    "1": [
+      1,
+      6
+    ],
+    "2": [
+      1,
+      12
+    ]
+  },
+  "alphas": [
+    0.0,
+    1e-06,
+    1e-05,
+    0.0001,
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0,
+    1000.0
+  ],
+  "selection": "fewest terms within one SE of minimum CV MSE, then strongest eligible alpha",
+  "holdout_used_in_search": false
+}

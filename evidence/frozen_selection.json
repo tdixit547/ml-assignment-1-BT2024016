@@ -1,0 +1,68 @@
+{
+  "1": {
+    "name": "average_lasso_ard",
+    "spec": {
+      "components": [
+        {
+          "method": "lasso",
+          "basis": "monomial",
+          "degree": 5,
+          "alpha": 0.008,
+          "relax": 0.0
+        },
+        {
+          "method": "ard",
+          "basis": "monomial",
+          "degree": 5
+        }
+      ],
+      "weights": [
+        1.0,
+        1.0
+      ]
+    },
+    "repeated_cv_mse": 0.2993067543815013,
+    "fold_mse_sd": 0.027033063449651527,
+    "cv_seeds": [
+      42,
+      137,
+      2026
+    ],
+    "cv_folds": 5,
+    "development_rows": 800
+  },
+  "2": {
+    "name": "average_ridge_lasso",
+    "spec": {
+      "components": [
+        {
+          "method": "ridge",
+          "basis": "legendre",
+          "degree": 12,
+          "alpha": 0.01,
+          "penalty": 2.0
+        },
+        {
+          "method": "lasso",
+          "basis": "monomial",
+          "degree": 9,
+          "alpha": 0.001,
+          "relax": 0.5
+        }
+      ],
+      "weights": [
+        1.0,
+        1.0
+      ]
+    },
+    "repeated_cv_mse": 0.2781193008012439,
+    "fold_mse_sd": 0.040501105501661624,
+    "cv_seeds": [
+      42,
+      137,
+      2026
+    ],
+    "cv_folds": 5,
+    "development_rows": 800
+  }
+}
