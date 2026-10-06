@@ -1,0 +1,119 @@
+{
+  "selection_rule": "Minimum mean MSE across 3 x 5 development folds among 11 frozen finalists per problem.",
+  "input_sha256": {
+    "BT2024016_test_var1.csv": "25b5a13f794ca91aba9b7e5f0a64f6cb8d0ff8f7e37bb7e8406b2211aabbcd74",
+    "BT2024016_test_var2.csv": "33b21e105fecdf763a17a470015f34616c7202ff2c2393cb7023b7dde261d1a8",
+    "BT2024016_train_var1.csv": "c3e1c2cc3f2994e1bd58b386db6317b95e5490fc8a864263de0647e69ec38dfe",
+    "BT2024016_train_var2.csv": "3385eaab7c15c0120d7d24b1d356e525bd92851471e9e456ee0b5383066725ef"
+  },
+  "selection": {
+    "1": {
+      "name": "average_lasso_ard",
+      "spec": {
+        "components": [
+          {
+            "method": "lasso",
+            "basis": "monomial",
+            "degree": 5,
+            "alpha": 0.008,
+            "relax": 0.0
+          },
+          {
+            "method": "ard",
+            "basis": "monomial",
+            "degree": 5
+          }
+        ],
+        "weights": [
+          1.0,
+          1.0
+        ]
+      },
+      "repeated_cv_mse": 0.2993067543815013,
+      "fold_mse_sd": 0.027033063449651527,
+      "cv_seeds": [
+        42,
+        137,
+        2026
+      ],
+      "cv_folds": 5,
+      "development_rows": 800
+    },
+    "2": {
+      "name": "average_ridge_lasso",
+      "spec": {
+        "components": [
+          {
+            "method": "ridge",
+            "basis": "legendre",
+            "degree": 12,
+            "alpha": 0.01,
+            "penalty": 2.0
+          },
+          {
+            "method": "lasso",
+            "basis": "monomial",
+            "degree": 9,
+            "alpha": 0.001,
+            "relax": 0.5
+          }
+        ],
+        "weights": [
+          1.0,
+          1.0
+        ]
+      },
+      "repeated_cv_mse": 0.2781193008012439,
+      "fold_mse_sd": 0.040501105501661624,
+      "cv_seeds": [
+        42,
+        137,
+        2026
+      ],
+      "cv_folds": 5,
+      "development_rows": 800
+    }
+  },
+  "comparison_summary": {
+    "1": [
+      {
+        "label": "Ridge d5",
+        "mse": 0.4575586937685373
+      },
+      {
+        "label": "Lasso d6",
+        "mse": 0.3245725968341478
+      },
+      {
+        "label": "Lasso d5",
+        "mse": 0.3015181389393213
+      },
+      {
+        "label": "ARD d5",
+        "mse": 0.3154109854776059
+      },
+      {
+        "label": "Average d5",
+        "mse": 0.2993067543815013
+      }
+    ],
+    "2": [
+      {
+        "label": "Ridge d8",
+        "mse": 0.3121183957804485
+      },
+      {
+        "label": "Ridge d12",
+        "mse": 0.3087279402897833
+      },
+      {
+        "label": "Relaxed Lasso d9",
+        "mse": 0.2910132877707156
+      },
+      {
+        "label": "Average d12",
+        "mse": 0.2781193008012439
+      }
+    ]
+  }
+}
