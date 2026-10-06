@@ -1,0 +1,178 @@
+{
+  "roll": "BT2024016",
+  "student_name": "Tanmay Dixit",
+  "seed": 42,
+  "holdout_fraction": 0.2,
+  "selection_rule": "Minimum mean MSE across 3 x 5 development folds among 11 frozen finalists per problem.",
+  "cv_seeds": [
+    42,
+    137,
+    2026
+  ],
+  "cv_folds": 5,
+  "holdout_note": "Original 200-row holdout reused for comparison; excluded from all new tuning.",
+  "input_sha256": {
+    "BT2024016_train_var1.csv": "c3e1c2cc3f2994e1bd58b386db6317b95e5490fc8a864263de0647e69ec38dfe",
+    "BT2024016_test_var1.csv": "25b5a13f794ca91aba9b7e5f0a64f6cb8d0ff8f7e37bb7e8406b2211aabbcd74",
+    "BT2024016_train_var2.csv": "3385eaab7c15c0120d7d24b1d356e525bd92851471e9e456ee0b5383066725ef",
+    "BT2024016_test_var2.csv": "33b21e105fecdf763a17a470015f34616c7202ff2c2393cb7023b7dde261d1a8"
+  },
+  "results": [
+    {
+      "problem": 1,
+      "features": [
+        "x1",
+        "x2",
+        "x3",
+        "x4",
+        "x5",
+        "x6"
+      ],
+      "degree": 5,
+      "selected_name": "average_lasso_ard",
+      "spec": {
+        "components": [
+          {
+            "method": "lasso",
+            "basis": "monomial",
+            "degree": 5,
+            "alpha": 0.008,
+            "relax": 0.0
+          },
+          {
+            "method": "ard",
+            "basis": "monomial",
+            "degree": 5
+          }
+        ],
+        "weights": [
+          1.0,
+          1.0
+        ]
+      },
+      "repeated_cv_mse": 0.2993067543815013,
+      "cv_fold_sd": 0.027033063449651527,
+      "holdout": {
+        "mse": 0.27887271995329316,
+        "r2": 0.97102618277366
+      },
+      "previous_holdout": {
+        "mse": 0.6170221116748457,
+        "r2": 0.9358937443172228
+      },
+      "train_rows": 1000,
+      "development_rows": 800,
+      "holdout_rows": 200,
+      "test_rows": 1000,
+      "final_fit_rows": 1000,
+      "prediction_file": "BT2024016_pred_var1.csv",
+      "model_file": "var1_model.json",
+      "active_terms_per_component": [
+        124,
+        97
+      ],
+      "cv_comparison": [
+        {
+          "label": "Ridge d5",
+          "mse": 0.4575586937685373
+        },
+        {
+          "label": "Lasso d6",
+          "mse": 0.3245725968341478
+        },
+        {
+          "label": "Lasso d5",
+          "mse": 0.3015181389393213
+        },
+        {
+          "label": "ARD d5",
+          "mse": 0.3154109854776059
+        },
+        {
+          "label": "Average d5",
+          "mse": 0.2993067543815013
+        }
+      ]
+    },
+    {
+      "problem": 2,
+      "features": [
+        "x1",
+        "x2",
+        "x3"
+      ],
+      "degree": 12,
+      "selected_name": "average_ridge_lasso",
+      "spec": {
+        "components": [
+          {
+            "method": "ridge",
+            "basis": "legendre",
+            "degree": 12,
+            "alpha": 0.01,
+            "penalty": 2.0
+          },
+          {
+            "method": "lasso",
+            "basis": "monomial",
+            "degree": 9,
+            "alpha": 0.001,
+            "relax": 0.5
+          }
+        ],
+        "weights": [
+          1.0,
+          1.0
+        ]
+      },
+      "repeated_cv_mse": 0.2781193008012439,
+      "cv_fold_sd": 0.040501105501661624,
+      "holdout": {
+        "mse": 0.2743579120553793,
+        "r2": 0.9952334950807636
+      },
+      "previous_holdout": {
+        "mse": 1.7490234716923816,
+        "r2": 0.9696136739078303
+      },
+      "train_rows": 1000,
+      "development_rows": 800,
+      "holdout_rows": 200,
+      "test_rows": 1000,
+      "final_fit_rows": 1000,
+      "prediction_file": "BT2024016_pred_var2.csv",
+      "model_file": "var2_model.json",
+      "active_terms_per_component": [
+        454,
+        118
+      ],
+      "cv_comparison": [
+        {
+          "label": "Ridge d8",
+          "mse": 0.3121183957804485
+        },
+        {
+          "label": "Ridge d12",
+          "mse": 0.3087279402897833
+        },
+        {
+          "label": "Relaxed Lasso d9",
+          "mse": 0.2910132877707156
+        },
+        {
+          "label": "Average d12",
+          "mse": 0.2781193008012439
+        }
+      ]
+    }
+  ],
+  "versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "matplotlib": "3.10.8",
+    "reportlab": "4.4.9",
+    "threadpoolctl": "3.6.0"
+  }
+}
