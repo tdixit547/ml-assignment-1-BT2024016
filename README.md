@@ -115,7 +115,7 @@ and input hashes are in `selected_config.json`.
 - `report.py`: three-page PDF generation.
 - `ML_Assignment_1.ipynb`: self-contained Colab workflow.
 - `selected_config.json`: frozen settings and input hashes.
-- `experiments/`: model-selection code, including the original baseline.
+- `experiments/`: model-selection code using all supplied inputs.
 - `evidence/`: measured selection results.
 - `outputs/`: fitted models, predictions, holdout audit, plots and final PDF.
 - `SUBMISSION_GUIDE.md`: required items and remaining steps.
