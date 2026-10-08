@@ -33,18 +33,11 @@ FEATURES = {1: [f"x{i}" for i in range(1, 7)], 2: ["x1", "x2", "x3"]}
 
 
 def candidate_specs(problem):
-    """Predeclared search: PDF text-layer hints plus all-feature controls.
+    """Use all supplied inputs across the permitted total-degree range.
 
-    The all-feature controls are deliberately limited in degree. This is not
-    an exhaustive search of every subset or every possible polynomial.
+    Under-determined ordinary-least-squares fits are skipped during evaluation.
     """
-    if problem == 1:
-        return [(FEATURES[1][:3], d) for d in range(1, 11)] + [
-            (FEATURES[1], d) for d in range(1, 5)
-        ]
-    return [(["x1"], d) for d in range(1, 21)] + [
-        (FEATURES[2], d) for d in range(1, 6)
-    ]
+    return [(FEATURES[problem], d) for d in range(1, (10 if problem == 1 else 20) + 1)]
 
 
 def make_model(degree):
@@ -322,11 +315,9 @@ def write_report(results, roll, student_name, out_dir):
               "single pipeline. All powers and interaction terms of total degree at most d are included. "
               "The intercept is fitted separately. No regularisation or non-polynomial estimator is used.")
     paragraph("Candidate search and degree selection", "ReportHeading")
-    paragraph("For var1, the search covers degrees 1-10 on x1, x2, x3 and degrees 1-4 on all six features. "
-              "For var2, it covers degrees 1-20 on x1 and degrees 1-5 on all three features. "
-              "The assignment PDF's extracted text suggests the reduced feature sets and degrees 3 and 4; "
-              "these hints are treated as candidates and checked against all-feature controls. "
-              "The search is not exhaustive over every feature subset. Candidates with as many "
+    paragraph("For var1, the search covers degrees 1-10 using all six features. "
+              "For var2, it covers degrees 1-20 using all three features. "
+              "Candidates with as many "
               "coefficients as observations in a CV training fold, or more, are skipped.")
     paragraph("The selected candidate has the fewest polynomial terms among those within one standard "
               "error of the lowest mean CV MSE. Standard error is the sample standard deviation of the "

@@ -8,7 +8,7 @@ from sklearn.linear_model import Ridge
 from sklearn.model_selection import KFold, cross_validate, train_test_split
 from threadpoolctl import threadpool_limits
 sys.path.insert(0, str(Path(__file__).parent))
-from assignment_baseline import make_model, candidate_specs, FEATURES
+from assignment_baseline import make_model, FEATURES
 
 ROOT=Path(__file__).resolve().parents[1]
 DATA_DIR=Path(os.environ.get('ASSIGNMENT_DATA_DIR',str(ROOT/'data')))
@@ -27,8 +27,7 @@ with threadpool_limits(limits=1):
         data = pd.read_csv(DATA_DIR / f'BT2024016_train_var{problem}.csv')
         development, _ = train_test_split(data, test_size=.2, random_state=42)
         cv = KFold(5, shuffle=True, random_state=42)
-        specs = [(f,d,0.) for f,d in candidate_specs(problem) if len(f)<len(FEATURES[problem])]
-        specs += [(FEATURES[problem], d, a) for d in range(1,max_degree+1) for a in ALPHAS]
+        specs = [(FEATURES[problem], d, a) for d in range(1,max_degree+1) for a in ALPHAS]
         rows = []
         for features, degree, alpha in specs:
             terms = math.comb(len(features)+degree,degree)-1
